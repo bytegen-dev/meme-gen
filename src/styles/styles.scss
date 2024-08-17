@@ -359,7 +359,7 @@ input{
         pointer-events: none;
 
         .absolute-div{
-            transform: translateY(-40px);
+            transform: translateY(-45px);
             .text{
             }
         }
@@ -368,6 +368,7 @@ input{
 
 
 .hide-me{
+    transform: scale(2.5);
     opacity: 0;
 }
 
