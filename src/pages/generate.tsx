@@ -98,7 +98,7 @@ const MemeGenerator = () => {
   return (
     <>
       <div className="min-h-screen bg-gray-100 flex page-el flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold mb-8">Create a Meme</h1>
+        <h1 className="text-4xl smaller font-bold mb-8">Create a Meme</h1>
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <input
             type="text"
@@ -178,7 +178,7 @@ const MemeGenerator = () => {
             
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg">
-            <img src={loadedImage || imageUrl} alt="Meme" className="" />
+            <img src={imageUrl} alt="Meme" className="" />
             <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
               <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
               <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
@@ -186,7 +186,7 @@ const MemeGenerator = () => {
           </div>}
           <div className="hide-me">
             {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef}>
-              <img src={loadedImage || imageUrl} alt="Meme" className="" />
+              <img src={imageUrl} alt="Meme" className="" />
               <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
                 <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
                 <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
@@ -217,7 +217,7 @@ const MemeGenerator = () => {
           </a>
         </div>
       </div>
-      <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
+      {/* <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
         if(imageUrl){
           saveImageToSession(imageUrl)
         }
@@ -225,7 +225,7 @@ const MemeGenerator = () => {
         position: "fixed",
         opacity: "0",
         pointerEvents: "none",
-      }} />
+      }} /> */}
     </>
   );
 };
