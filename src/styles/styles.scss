@@ -171,6 +171,14 @@ input{
     position: relative !important;
     font-family: "Lilita One", sans-serif;
     // background-color: #999;
+    max-height:450px;
+    @media screen and (max-width: 500px) {
+            max-height: 350px;
+        }
+
+        @media screen and (max-width: 400px) {
+            max-height: 300px;
+        }
 
     display: flex;
     justify-content: center;
@@ -202,7 +210,6 @@ input{
         width: 100%;
         position: relative;
         z-index: 9;
-        max-height: 450px;
         // height: fit-content;
         min-height: 250px;
         opacity: 1;
@@ -214,13 +221,7 @@ input{
         background-position: center;
         // background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
     
-        @media screen and (max-width: 500px) {
-            max-height: 350px;
-        }
-
-        @media screen and (max-width: 400px) {
-            max-height: 300px;
-        }
+        
     }
 
     .absolute-div{
