@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div className="center-me">
         <div className="bottom-details">
-          <a href="https://bytegen.dev" target="_blank" className="link">
+          <a href="https://bytegen.dev" target="_blank" className="link hjhgf">
             <HiGlobeAlt />
           </a>
           <a href="https://github.com/bytegen-dev" target="_blank" className="link">
