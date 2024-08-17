@@ -7,7 +7,7 @@ import { HiGlobeAlt } from 'react-icons/hi';
 const MemeGenerator = () => {
   const [topText, setTopText] = useState<string>('');
   const [bottomText, setBottomText] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('default.png');
+  const [imageUrl, setImageUrl] = useState<string>('bytegen.png');
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
   const [loadedImage, setLoadedImage] = useState("")
@@ -107,10 +107,15 @@ const MemeGenerator = () => {
           />
           <div className="image-templates">
             {/* <b>Quick add</b> */}
-            <div className="setto"  onClick={()=>{
-              setImageUrl("default.png")
+            <div className="setto" onClick={()=>{
+              setImageUrl("bytegen.png")
             }}>
-              Default
+              Bytegen
+            </div>
+            <div className="setto"  onClick={()=>{
+              setImageUrl("batman.png")
+            }}>
+              batman
             </div>
             {/* <div className="setto"  onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GVGQ-5BWYAAOawo?format=png&name=small")
@@ -127,11 +132,7 @@ const MemeGenerator = () => {
             }}>
               Elon musk
             </div>
-            <div className="setto" onClick={()=>{
-              setImageUrl("bytegen.png")
-            }}>
-              Bytegen
-            </div>
+            
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
             <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
@@ -144,9 +145,9 @@ const MemeGenerator = () => {
               pointerEvents: "none",
             }} />
             <img src={loadedImage} alt="Meme" className="" />
-            <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white">
-              <span className="font-bold text-2xl mt-2">{topText}</span>
-              <span className="font-bold text-2xl mb-2">{bottomText}</span>
+            <div className={`absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "https://th.bing.com/th/id/OIP.06sELAGC_YnJm6Prk-rk4wHaHa?rs=1&pid=ImgDetMain" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "https://pbs.twimg.com/media/GU0fSAaasAA9ahD?format=jpg&name=small" ? "elon-musk" : ""}`}>
+              <span className={`font-bold text-2xl mt-2 ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</span>
+              <span className={`font-bold text-2xl mb-2 ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</span>
             </div>
           </div>}
           {error && <p className='error'>{error || "an error occured"}</p>}

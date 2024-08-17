@@ -14,7 +14,7 @@ export default function Home() {
         <header className="p-4 text-white text-center">
           <h1 className="text-4xl sax font-bold">MemeGen 💩</h1>
         </header>
-        <main className="p-8 text-center">
+        <main className="p-8 text-center mainres">
           <p>Just a basic meme generator built in 60 minutes with NEXT.js and Typescript 🙂</p>
           <Link href="/generate" className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 primary-btn">
             Create a Meme
