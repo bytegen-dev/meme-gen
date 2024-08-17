@@ -127,7 +127,7 @@ input{
 }
 
 .dark-bg{
-    background-color: #000;
+    // background-color: #000;
     border-radius: 10px;
     overflow: hidden;
     height: fit-content;
@@ -144,15 +144,15 @@ input{
         min-width: 0px;
         // height: fit-content;
         // min-height: 250px;
-        opacity: 0.8;
-        background-color: #000;
+        opacity: 1;
+        // background-color: #000;
         color: transparent;
         background-size: contain;
         background-repeat: no-repeat;
         object-fit: cover;
         object-position: center;
         background-position: center;
-        background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
+        // background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
     }
 
     .absolute-div{
@@ -172,6 +172,8 @@ input{
             line-height: 120%;
             font-size: 60px;
             font-weight: bold;
+            font-family: "Lilita One", sans-serif !important;
+            
 
 
             filter: drop-shadow(0px 0px 4px #000a);
