@@ -144,27 +144,27 @@ const MemeGenerator = () => {
           />}
           <div className="image-templates">
             {/* <b>Quick add</b> */}
-            <div className="setto" onClick={()=>{
+            <div className={`setto ${imageUrl === "bytegen.png"}`} onClick={()=>{
               setImageUrl("bytegen.png")
             }}>
               Bytegen
             </div>
-            <div className="setto"  onClick={()=>{
+            <div className={`setto ${imageUrl === "batman.png"}`}  onClick={()=>{
               setImageUrl("batman.png")
             }}>
-              batman
+              Batman
             </div>
-            {/* <div className="setto"  onClick={()=>{
+            {/* <div className={`setto ${imageUrl === "bytegen.png"}`}  onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GVGQ-5BWYAAOawo?format=png&name=small")
             }}>
               NIKE pig
             </div> */}
-            <div className="setto" onClick={()=>{
+            <div className={`setto ${imageUrl === "doge.png"}`} onClick={()=>{
               setImageUrl("doge.png")
             }}>
               Doge
             </div>
-            <div className="setto" onClick={()=>{
+            <div className={`setto ${imageUrl === "elon-musk.png"}`} onClick={()=>{
               setImageUrl("elon-musk.png")
             }}>
               Elon musk

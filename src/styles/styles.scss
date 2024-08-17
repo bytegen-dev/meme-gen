@@ -197,9 +197,13 @@ input{
             }
         }
 
+        @media screen and (max-width: 600px) {
+            font-size: 55px !important;
+        }
+
         @media screen and (max-width: 450px) {
             .text{
-                font-size: 60px !important;
+                font-size: 50px !important;
             }
         }
 
@@ -411,6 +415,7 @@ input{
     align-items: center;
     width: 100%;
     z-index: 20;
+    margin-top: 20px;
 }
 
 .link{
