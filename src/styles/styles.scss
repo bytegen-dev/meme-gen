@@ -202,16 +202,25 @@ input{
         width: 100%;
         position: relative;
         z-index: 9;
+        max-height: 450px;
         // height: fit-content;
-        // min-height: 250px;
+        min-height: 250px;
         opacity: 1;
         color: transparent;
         background-size: contain;
         background-repeat: no-repeat;
         object-fit: cover;
-        object-position: center;
+        object-position: top center;
         background-position: center;
         // background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
+    
+        @media screen and (max-width: 500px) {
+            max-height: 350px;
+        }
+
+        @media screen and (max-width: 400px) {
+            max-height: 300px;
+        }
     }
 
     .absolute-div{
