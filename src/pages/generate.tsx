@@ -60,7 +60,7 @@ const MemeGenerator = () => {
   
       const canvas = await html2canvas(element, {
         backgroundColor: "#ffffff00",
-        scale: 2,
+        scale: 4,
       });
   
       const dataUrl = canvas.toDataURL('image/png');
