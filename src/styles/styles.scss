@@ -35,6 +35,11 @@ h1{
     }
 }
 
+img{
+    user-select: none;
+    pointer-events: default;
+}
+
 
 .sax{
     margin-bottom: -20px;
@@ -184,14 +189,14 @@ input{
             
 
 
-            filter: drop-shadow(0px 0px 4px #000a);
+            filter: drop-shadow(0px 0px 4px #0009);
             
             &:first-child{
                 top: 10px;
             }
 
             &:last-child{
-                bottom: 15px;
+                bottom: 20px;
             }
 
             &.long-bottom, .long-top{
@@ -221,17 +226,32 @@ input{
             .text{
                 font-family: "Luckiest Guy", sans-serif !important;
                 font-family: "Jersey 10", sans-serif !important;
-                font-size: 80px;
+                font-size: 100px;
                 color: rgb(237, 209, 52);
-                text-shadow: 0px 0px 10px rgba(74, 38, 101, 0.145);
                 letter-spacing: 1px;
                 
+                &:last-child{
+                    bottom: 10px;
+                }
+
                 @media screen and (max-width: 600px) {
-                    font-size: 60px !important;
+                    font-size: 80px !important;
                 }
 
                 @media screen and (max-width:450px) {
-                    font-size: 60px !important;
+                    font-size: 70px !important;
+                }
+
+                &.long-bottom, .long-top{
+                    font-size: 55px;
+                    
+                    @media screen and (max-width: 600px) {
+                        font-size: 45px !important;
+                    }
+        
+                    @media screen and (max-width:450px) {
+                        font-size: 40px !important;
+                    }
                 }
             }
         }

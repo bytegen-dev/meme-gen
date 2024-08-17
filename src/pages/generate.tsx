@@ -98,7 +98,7 @@ const MemeGenerator = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100 flex page-el flex-col items-center justify-center">
+      <div className="bg-gray-100 flex page-el flex-col items-center justify-center">
         <h1 className="text-4xl smaller font-bold mb-8">Create a Meme</h1>
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <input
@@ -119,12 +119,12 @@ const MemeGenerator = () => {
           />
           {!imageValid && <input
             type="number"
-            placeholder="Height"
+            placeholder="Height (px)"
             className="mb-4 p-2 border rounded w-full"
             value={imageHeight}
             onChange={(e) => {
               const value:any = e?.target?.value
-              if(value < 500){
+              if(value < 501){
                 setImageHeight(value)
               }
             }}
@@ -192,10 +192,11 @@ const MemeGenerator = () => {
             
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg">
-            <img src={imageUrl} alt="Meme" className="" style={(imageValid && (imageHeight > 0)) ? {
+            <img src={imageUrl} alt="Meme" className="" style={(imageValid) ? {
               opacity: 1
             } : {
-              height: imageHeight
+              height: imageHeight + "px",
+              minHeight: "250px",
             }} />
             <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
               <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
@@ -204,10 +205,11 @@ const MemeGenerator = () => {
           </div>}
           <div className="hide-me">
             {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef}>
-              <img src={imageUrl} alt="Meme" className=""  style={(imageValid && (imageHeight > 0)) ? {
+              <img src={imageUrl} alt="Meme" className=""  style={(imageValid) ? {
               opacity: 1
             } : {
-              height: imageHeight
+              height: imageHeight + "px",
+              minHeight: "250px",
             }} />
               <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
                 <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
