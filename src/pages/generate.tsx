@@ -134,7 +134,7 @@ const MemeGenerator = () => {
             </div>
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
-            <img src={imageUrl} alt="Meme" className="w-full h-full object-cover rounded-lg" onLoad={()=>{
+            <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
               if(imageUrl){
                 saveImageToSession(imageUrl)
               }
@@ -143,7 +143,7 @@ const MemeGenerator = () => {
               opacity: "0",
               pointerEvents: "none",
             }} />
-            <img src={loadedImage} alt="Meme" className="w-full h-full object-cover rounded-lg" />
+            <img src={loadedImage} alt="Meme" className="" />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white">
               <span className="font-bold text-2xl mt-2">{topText}</span>
               <span className="font-bold text-2xl mb-2">{bottomText}</span>
