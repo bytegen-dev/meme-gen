@@ -11,7 +11,7 @@ const MemeGenerator = () => {
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
   const [loadedImage, setLoadedImage] = useState("")
-  const [imageHeight, setImageHeight] = useState(300)
+  const [imageHeight, setImageHeight] = useState("300")
 
   const imageValid = (imageUrl === "bytegen.png") || (imageUrl === "batman.png") || (imageUrl === "doge.png") || (imageUrl === "elon-musk.png")
 
@@ -197,7 +197,16 @@ const MemeGenerator = () => {
             } : {
               height: imageHeight + "px",
               minHeight: "250px",
+              width: "fit-content",
+              objectFit: "contain",
+              // minWidth: "fit-content",
             }} />
+            <div className="absoluto" style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}>
+            </div>
             <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
               <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
               <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
@@ -212,7 +221,16 @@ const MemeGenerator = () => {
             } : {
               height: imageHeight + "px",
               minHeight: "250px",
+              width: "fit-content",
+              objectFit: "contain",
+              // minWidth: "fit-content",
             }} />
+              <div className="absoluto" style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}>
+              </div>
               <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
                 <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
                 <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
