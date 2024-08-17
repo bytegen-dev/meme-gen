@@ -6,7 +6,7 @@ import { HiGlobeAlt } from 'react-icons/hi';
 
 const MemeGenerator = () => {
   const [topText, setTopText] = useState<string>('');
-  const [bottomText, setBottomText] = useState<string>('');
+  const [bottomText, setBottomText] = useState<string>('GM');
   const [imageUrl, setImageUrl] = useState<string>('bytegen.png');
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
@@ -123,12 +123,12 @@ const MemeGenerator = () => {
               NIKE pig
             </div> */}
             <div className="setto" onClick={()=>{
-              setImageUrl("https://th.bing.com/th/id/OIP.06sELAGC_YnJm6Prk-rk4wHaHa?rs=1&pid=ImgDetMain")
+              setImageUrl("doge.png")
             }}>
               Doge
             </div>
             <div className="setto" onClick={()=>{
-              setImageUrl("https://pbs.twimg.com/media/GU0fSAaasAA9ahD?format=jpg&name=small")
+              setImageUrl("elon-musk.png")
             }}>
               Elon musk
             </div>
@@ -145,7 +145,7 @@ const MemeGenerator = () => {
               pointerEvents: "none",
             }} />
             <img src={loadedImage} alt="Meme" className="" />
-            <div className={`absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "https://th.bing.com/th/id/OIP.06sELAGC_YnJm6Prk-rk4wHaHa?rs=1&pid=ImgDetMain" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "https://pbs.twimg.com/media/GU0fSAaasAA9ahD?format=jpg&name=small" ? "elon-musk" : ""}`}>
+            <div className={`absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
               <span className={`font-bold text-2xl mt-2 ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</span>
               <span className={`font-bold text-2xl mb-2 ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</span>
             </div>
