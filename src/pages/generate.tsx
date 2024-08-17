@@ -118,9 +118,9 @@ const MemeGenerator = () => {
               NIKE pig
             </div> */}
             <div className="setto" onClick={()=>{
-              setImageUrl("https://pbs.twimg.com/media/GT4ZkhNWsAAU6GK?format=jpg&name=small")
+              setImageUrl("https://th.bing.com/th/id/OIP.06sELAGC_YnJm6Prk-rk4wHaHa?rs=1&pid=ImgDetMain")
             }}>
-              Shooter 🔫
+              Doge
             </div>
             <div className="setto" onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GU0fSAaasAA9ahD?format=jpg&name=small")
