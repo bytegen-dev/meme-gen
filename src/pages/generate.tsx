@@ -117,19 +117,6 @@ const MemeGenerator = () => {
             onChange={(e) => setBottomText(e.target.value)}
             required
           />
-          {!imageValid && <input
-            type="number"
-            placeholder="Height (px)"
-            className="mb-4 p-2 border rounded w-full"
-            value={imageHeight}
-            onChange={(e) => {
-              const value:any = e?.target?.value
-              if(value < 501){
-                setImageHeight(value)
-              }
-            }}
-            required
-          />}
           <input
             type="text"
             placeholder="Image URL (required)"
@@ -192,21 +179,7 @@ const MemeGenerator = () => {
             
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg">
-            <img src={imageUrl} alt="Meme" className="" style={(imageValid) ? {
-              opacity: 1
-            } : {
-              height: imageHeight + "px",
-              minHeight: "250px",
-              width: "fit-content",
-              objectFit: "contain",
-              // minWidth: "fit-content",
-            }} />
-            <div className="absoluto" style={{
-              backgroundImage: `url(${imageUrl})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}>
-            </div>
+            <img src={imageUrl} alt="Meme" className=""/>
             <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
               <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
               <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
@@ -216,21 +189,7 @@ const MemeGenerator = () => {
             {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef} style={{
               borderRadius: "0px",
             }}>
-              <img src={imageUrl} alt="Meme" className=""  style={(imageValid) ? {
-              opacity: 1
-            } : {
-              height: imageHeight + "px",
-              minHeight: "250px",
-              width: "fit-content",
-              objectFit: "contain",
-              // minWidth: "fit-content",
-            }} />
-              <div className="absoluto" style={{
-                backgroundImage: `url(${imageUrl})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}>
-              </div>
+              <img src={imageUrl} alt="Meme" className="" />
               <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
                 <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
                 <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
