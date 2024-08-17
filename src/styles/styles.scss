@@ -4,6 +4,17 @@ $secondary: #6e268a;
 .page-el{
     background-image: linear-gradient(45deg, $secondary, rgba($primary, 0.7), $secondary);
     padding: 50px 20px;
+    padding-bottom: 10px;
+    background: transparent !important;
+}
+
+html{
+    background-color: $secondary;
+}
+
+#__next{
+    background-color: #fffc;
+    background-image: linear-gradient(45deg, $secondary, rgba($primary, 0.7), $secondary);
     padding-bottom: 100px;
 }
 
@@ -221,9 +232,7 @@ input{
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: fixed;
     z-index: 20;
-    bottom: 20px;
 }
 
 .link{
