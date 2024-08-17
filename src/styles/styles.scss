@@ -1,0 +1,232 @@
+$primary: rgb(66, 117, 235);
+$secondary: rgb(110, 38, 138);
+
+.page-el{
+    background-image: linear-gradient(45deg, $secondary, rgba($primary, 0.7), $secondary);
+    padding: 50px 20px;
+    padding-bottom: 100px;
+}
+
+*{
+    font-family: "Poppins", sans-serif !important;
+}
+
+h1{
+    filter: drop-shadow(0px 0px 3px #0002);
+}
+
+
+.sax{
+    margin-bottom: -20px;
+}
+
+.bg-white{
+    background-color: #fff1;
+    border-radius: 20px;
+    border: 1px solid #fff2;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 10px #0001 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+
+    .primary-btn{
+        transition: all 0.5s ease;
+        margin-top: 30px;
+
+        &:disabled{
+            margin-top: -30px;
+            opacity: 0;
+            filter: blur(30px);
+        }
+    }
+}
+
+input{
+    border-radius: 10px !important;
+    border: 1px solid #fff2 !important;
+    background-color: #fff1!important;
+    color: #fff;
+    box-shadow: none !important;
+    outline: none;
+    font-weight: 500;
+
+    &::placeholder{
+        color: #fff9;
+    }
+    
+    &:focus, &:hover{
+        background-color: #fff9 !important;
+        color: #444 !important;
+        
+        &::placeholder{
+            color: #4446 !important;
+        }
+    }
+
+}
+
+.image-templates{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+
+    .setto{
+        padding: 3px 7px;
+        font-weight: 500;
+        font-size: 12px;
+        border-radius: 1000px;
+        background-color: #fff1;
+        border: 1px solid #fff2;
+        transition: all 0.5s ease;
+        cursor: pointer;
+
+        &:active, &:focus{
+            transform: scale(1.05);
+        }
+
+        &.true{
+            background-color: $secondary;
+            color: #fff;
+        }
+    }
+}
+
+.dark-bg{
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    height: fit-content;
+    // max-height: 300px;
+    margin-top: 15px;
+    box-shadow: 0px 0px 10px #0002;
+
+
+    img{
+        width: 100%;
+        height: fit-content;
+        min-height: 250px;
+        opacity: 0.8;
+        background-color: #000;
+        color: transparent;
+        background-size: contain;
+        background-repeat: no-repeat;
+        // object-fit: cover;
+        object-position: center;
+        background-position: center;
+        background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
+    }
+
+    .absolute{
+        padding: 5px 10px;
+        
+        span{
+            filter: drop-shadow(0px 0px 4px #000a);
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        span{
+            font-size: 23px !important;
+        }
+    }
+}
+
+.primary-btn{
+    background-color: #fff1;
+    border: 1px solid #fff4;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    font-size: 17px;
+    padding: 8px 20px;
+    border-radius: 30px;
+
+    &:hover{
+        background-color: #fff1 !important;
+    }
+
+    &:active{
+        transform: scale(1.05);
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: calc(100% + 40px);
+        top: -20px;
+        background-color: #fff4;
+        transform: rotate(20deg);
+        left: -20px;
+        animation: move 3s linear forwards infinite;
+        filter: blur(10px);
+
+        @keyframes move {
+            0%{
+                left: -100px;
+            }
+            100%{
+                left: calc(100% + 100px);
+            }
+        }
+    }
+}
+
+.bottom-details{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 200px;
+    background-color: #fff1;
+    border: 1px solid #fff1;
+    backdrop-filter: blur(30px);
+
+    @media screen and (max-width: 600px) {
+        padding: 7px;
+    }
+}
+
+.center-me{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    bottom: 20px;
+}
+
+.link{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    border: 1px solid #fff2;
+    background: #fff2;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    @media screen and (max-width: 600px) {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    &:active{
+        transform: scale(1.3);
+    }
+}
