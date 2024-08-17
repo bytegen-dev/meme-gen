@@ -204,7 +204,9 @@ const MemeGenerator = () => {
             </div>
           </div>}
           <div className="hide-me">
-            {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef}>
+            {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef} style={{
+              borderRadius: "0px",
+            }}>
               <img src={imageUrl} alt="Meme" className=""  style={(imageValid) ? {
               opacity: 1
             } : {
