@@ -7,7 +7,7 @@ import { HiGlobeAlt } from 'react-icons/hi';
 const MemeGenerator = () => {
   const [topText, setTopText] = useState<string>('');
   const [bottomText, setBottomText] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('/default-meme.jpg');
+  const [imageUrl, setImageUrl] = useState<string>('default.png');
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
   const [loadedImage, setLoadedImage] = useState("")
@@ -107,25 +107,30 @@ const MemeGenerator = () => {
           />
           <div className="image-templates">
             {/* <b>Quick add</b> */}
-            <div className="setto" onClick={()=>{
-              setImageUrl("/default-meme.jpg")
+            <div className="setto"  onClick={()=>{
+              setImageUrl("default.png")
             }}>
               Default
             </div>
-            <div className="setto"  onClick={()=>{
+            {/* <div className="setto"  onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GVGQ-5BWYAAOawo?format=png&name=small")
             }}>
               NIKE pig
-            </div>
+            </div> */}
             <div className="setto" onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GT4ZkhNWsAAU6GK?format=jpg&name=small")
             }}>
-              Shooter
+              Shooter 🔫
             </div>
             <div className="setto" onClick={()=>{
               setImageUrl("https://pbs.twimg.com/media/GU0fSAaasAA9ahD?format=jpg&name=small")
             }}>
               Elon musk
+            </div>
+            <div className="setto" onClick={()=>{
+              setImageUrl("bytegen.png")
+            }}>
+              Bytegen
             </div>
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
