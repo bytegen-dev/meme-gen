@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import html2canvas from 'html2canvas';
+import { useRef, useState } from 'react';
 import { FaFileDownload, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { HiGlobeAlt } from 'react-icons/hi';
@@ -7,7 +8,38 @@ const MemeGenerator = () => {
   const [topText, setTopText] = useState<string>('');
   const [bottomText, setBottomText] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('/default-meme.jpg');
-  const [error, setError] = useState<boolean>(false)
+  const [error, setError] = useState<string>("")
+  const [downloading, setdownloading] = useState<boolean>(false)
+
+  const elementRef = useRef(null);
+
+  const downloadImage = async () => {
+    try{
+      setdownloading(true)
+      setError("")
+      const element = elementRef.current;
+      if (!element) return;
+  
+      const canvas = await html2canvas(element);
+  
+      const dataUrl = canvas.toDataURL('image/png');
+  
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      const randomNo:any = Math.ceil(Math.random()*1000)
+      link.download = `meme-${randomNo}.png`;
+      link.click(); 
+      setTimeout(()=>{
+        setdownloading(false)
+      }, 2000)
+    } catch(error:any){
+      console.error(error?.message)
+      setError(error?.message)
+      setTimeout(()=>{
+        setdownloading(false)
+      }, 100)
+    }
+  };
 
   return (
     <>
@@ -36,12 +68,6 @@ const MemeGenerator = () => {
             className="mb-4 p-2 border rounded w-full"
             value={imageUrl}
             required
-            onErrorCapture={()=>{
-              setError(true)
-            }}
-            onLoadedData={()=>{
-              setError(false)
-            }}
             onChange={(e) => setImageUrl(e.target.value)}
           />
           <div className="image-templates">
@@ -67,16 +93,21 @@ const MemeGenerator = () => {
               Elon musk
             </div>
           </div>
-          {imageUrl && <div className="relative w-full h-64 dark-bg">
+          {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
             <img src={imageUrl} alt="Meme" className="w-full h-full object-cover rounded-lg" />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white">
               <span className="font-bold text-2xl mt-2">{topText}</span>
               <span className="font-bold text-2xl mb-2">{bottomText}</span>
             </div>
           </div>}
-          {error && <p className='error'>invalid image</p>}
-          <button className="primary-btn button" disabled={!imageUrl || error}>
-            Save Image <FaFileDownload />
+          {error && <p className='error'>{error || "an error occured"}</p>}
+          <button className="primary-btn button" disabled={!imageUrl} onClick={()=>{
+            if(downloading){
+              return
+            }
+            downloadImage()
+          }}>
+            {downloading ? "Downloading..." : <>Save Image <FaFileDownload /></>}
           </button>
         </div>
       </div>
