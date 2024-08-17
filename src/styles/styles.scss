@@ -127,10 +127,20 @@ input{
     }
 
     .absolute{
-        padding: 5px 10px;
-        
         span{
+            position: absolute;
+            z-index: 40;
+            width: 100%;
+            padding: 0 15px !important;
+
             filter: drop-shadow(0px 0px 4px #000a);
+            
+            &:first-child{
+                top: 10px;
+            }
+            &:last-child{
+                bottom: 20px;
+            }
         }
     }
 

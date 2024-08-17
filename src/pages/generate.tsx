@@ -10,8 +10,41 @@ const MemeGenerator = () => {
   const [imageUrl, setImageUrl] = useState<string>('/default-meme.jpg');
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
+  const [loadedImage, setLoadedImage] = useState("")
 
   const elementRef = useRef(null);
+
+  function getImageFromSession(){
+    const image = sessionStorage.getItem('image');
+    if (image === null) {
+      console.error('Image not found in session storage');
+    }
+    return image;
+  }
+
+  async function saveImageToSession(url: string): Promise<void> {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const reader = new FileReader();
+    console.log("Saving image")
+    
+    return new Promise((resolve, reject) => {
+      reader.onload = () => {
+        const image: any = reader.result;
+        sessionStorage.setItem('image', image);
+        console.clear()
+        console.log("image Saved")
+        setLoadedImage(image)
+        resolve();
+      };
+
+      reader.onerror = () => {
+        reject(new Error('Failed to read image'));
+      };
+
+      reader.readAsDataURL(blob);
+    });
+  }
 
   const downloadImage = async () => {
     try{
@@ -20,7 +53,9 @@ const MemeGenerator = () => {
       const element = elementRef.current;
       if (!element) return;
   
-      const canvas = await html2canvas(element);
+      const canvas = await html2canvas(element, {
+        backgroundColor: "#ffffff0"
+      });
   
       const dataUrl = canvas.toDataURL('image/png');
   
@@ -94,7 +129,16 @@ const MemeGenerator = () => {
             </div>
           </div>
           {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
-            <img src={imageUrl} alt="Meme" className="w-full h-full object-cover rounded-lg" />
+            <img src={imageUrl} alt="Meme" className="w-full h-full object-cover rounded-lg" onLoad={()=>{
+              if(imageUrl){
+                saveImageToSession(imageUrl)
+              }
+            }} style={{
+              position: "absolute",
+              opacity: "0",
+              pointerEvents: "none",
+            }} />
+            <img src={loadedImage} alt="Meme" className="w-full h-full object-cover rounded-lg" />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white">
               <span className="font-bold text-2xl mt-2">{topText}</span>
               <span className="font-bold text-2xl mb-2">{bottomText}</span>
