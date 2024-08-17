@@ -351,6 +351,7 @@ input{
     }
 
     &.download{
+        transform: scale(1.5);
         position: fixed !important;
         top: 0;
         left: 22px;
@@ -368,7 +369,6 @@ input{
 
 
 .hide-me{
-    transform: scale(1.5);
     opacity: 0;
 }
 
