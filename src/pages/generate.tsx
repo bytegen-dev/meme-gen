@@ -1,6 +1,6 @@
 import html2canvas from 'html2canvas';
-import { useRef, useState } from 'react';
-import { FaFileDownload, FaGithub } from 'react-icons/fa';
+import { useEffect, useRef, useState } from 'react';
+import { FaEdit, FaFileDownload, FaGithub, FaPlus } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { HiGlobeAlt } from 'react-icons/hi';
 
@@ -11,6 +11,10 @@ const MemeGenerator = () => {
   const [error, setError] = useState<string>("")
   const [downloading, setdownloading] = useState<boolean>(false)
   const [loadedImage, setLoadedImage] = useState("")
+
+  const imageValid = (imageUrl === "bytegen.png") || (imageUrl === "batman.png") || (imageUrl === "doge.png") || (imageUrl === "elon-musk.png")
+
+  const imageName = imageValid ? imageUrl?.replace(".png", "") : "Custom image"
 
   const elementRef = useRef(null);
 
@@ -54,15 +58,16 @@ const MemeGenerator = () => {
       if (!element) return;
   
       const canvas = await html2canvas(element, {
-        backgroundColor: "#ffffff0"
+        backgroundColor: "#ffffff00",
+        scale: 2,
       });
   
       const dataUrl = canvas.toDataURL('image/png');
   
       const link = document.createElement('a');
       link.href = dataUrl;
-      const randomNo:any = Math.ceil(Math.random()*1000)
-      link.download = `meme-${randomNo}.png`;
+      const randomNo:any = Math.ceil(Math.random()*100)
+      link.download = `${topText || bottomText || `Meme-${randomNo}`}.png`;
       link.click(); 
       setTimeout(()=>{
         setdownloading(false)
@@ -73,6 +78,20 @@ const MemeGenerator = () => {
       setTimeout(()=>{
         setdownloading(false)
       }, 100)
+    }
+  };
+
+  const [imageFile, setImageFile] = useState((null))
+
+  const handleImageChange = (e:any) => {
+    const file:any = e.target.files?.[0];
+    if (file) {
+      setImageFile(file)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -101,10 +120,28 @@ const MemeGenerator = () => {
             type="text"
             placeholder="Image URL (required)"
             className="mb-4 p-2 border rounded w-full"
-            value={imageUrl}
+            value={imageName || ""}
             required
-            onChange={(e) => setImageUrl(e.target.value)}
+            onChange={(e) => {
+
+            }}
           />
+          {/* <span className="add-image">
+            Add Image
+          </span> */}
+          {<input
+            type="file"
+            style={{
+              opacity: "0",
+              position: "absolute",
+              pointerEvents: "none"
+            }}
+            placeholder="Upload Meme Background"
+            className="mb-4 p-2 border rounded w-full"
+            accept="image/*"
+            id='input-id'
+            onChange={(e) => handleImageChange(e)}
+          />}
           <div className="image-templates">
             {/* <b>Quick add</b> */}
             <div className="setto" onClick={()=>{
@@ -132,24 +169,30 @@ const MemeGenerator = () => {
             }}>
               Elon musk
             </div>
+            <div className={`setto ${imageValid ? "" : "true"}`}  onClick={()=>{
+              const inputEl = document.getElementById("input-id")
+              inputEl?.click()
+            }}>
+              Custom {imageValid ? <FaPlus /> : <FaEdit /> }
+            </div>
             
           </div>
-          {imageUrl && <div className="relative w-full h-64 dark-bg" ref={elementRef}>
-            <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
-              if(imageUrl){
-                saveImageToSession(imageUrl)
-              }
-            }} style={{
-              position: "absolute",
-              opacity: "0",
-              pointerEvents: "none",
-            }} />
-            <img src={loadedImage} alt="Meme" className="" />
-            <div className={`absolute top-0 left-0 w-full h-full flex flex-col justify-between text-center text-white ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
-              <span className={`font-bold text-2xl mt-2 ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</span>
-              <span className={`font-bold text-2xl mb-2 ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</span>
+          {imageUrl && <div className="relative w-full h-64 dark-bg">
+            <img src={loadedImage || imageUrl} alt="Meme" className="" />
+            <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
+              <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
+              <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
             </div>
           </div>}
+          <div className="hide-me">
+            {imageUrl && <div className="relative w-full h-64 dark-bg download" ref={elementRef}>
+              <img src={loadedImage || imageUrl} alt="Meme" className="" />
+              <div className={`absolute-div ${imageUrl === "bytegen.png" ? "bytegen" : ""} ${imageUrl === "doge.png" ? "doge" : ""} ${imageUrl === "batman.png" ? "default" : ""} ${imageUrl === "elon-musk.png" ? "elon-musk" : ""}`}>
+                <div className={`text ${topText?.length > 7 ? "long-top" : ""}`}>{topText}</div>
+                <div className={`text ${bottomText?.length > 7 ? "long-bottom" : ""}`}>{bottomText}</div>
+              </div>
+            </div>}
+          </div>
           {error && <p className='error'>{error || "an error occured"}</p>}
           <button className="primary-btn button" disabled={!imageUrl} onClick={()=>{
             if(downloading){
@@ -174,6 +217,15 @@ const MemeGenerator = () => {
           </a>
         </div>
       </div>
+      <img src={imageUrl} alt="Meme" className="" onLoad={()=>{
+        if(imageUrl){
+          saveImageToSession(imageUrl)
+        }
+      }} style={{
+        position: "fixed",
+        opacity: "0",
+        pointerEvents: "none",
+      }} />
     </>
   );
 };

@@ -89,12 +89,16 @@ input{
 
     .setto{
         padding: 3px 7px;
-        font-weight: 500;
+        font-weight: 700;
         font-size: 12px;
         border-radius: 1000px;
         background-color: #fff1;
         border: 1px solid #fff2;
         transition: all 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
         cursor: pointer;
 
         &:active, &:focus{
@@ -102,7 +106,7 @@ input{
         }
 
         &.true{
-            background-color: $secondary;
+            background-color: #fff3;
             color: #fff;
         }
     }
@@ -111,6 +115,15 @@ input{
 .error{
     margin-top: 20px;
     color: red;
+}
+
+.add-image{
+    padding: 10px 15px;
+    font-weight: 700;
+    background-color: #fff1;
+    border: 1px solid #fff2;
+    border-radius: 100px;
+    margin-bottom: 30px;
 }
 
 .dark-bg{
@@ -122,6 +135,8 @@ input{
     // max-height: 300px;
     margin-top: 15px;
     box-shadow: 0px 0px 10px #0002;
+    position: relative !important;
+    font-family: "Lilita One", sans-serif;
 
 
     img{
@@ -140,35 +155,58 @@ input{
         background-image: url("https://pbs.twimg.com/profile_banners/1578160497664397318/1723059116/1080x360");
     }
 
-    .absolute{
-        span{
-            position: absolute;
+    .absolute-div{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0px !important;
+        top: 0px !important;
+        .text{
+            position: absolute !important;
             z-index: 40;
             width: 100%;
+            text-align: center;
+            word-wrap: break-word;
             padding: 0 15px !important;
+            // background-color: blue;
+            line-height: 120%;
+            font-size: 60px;
+            font-weight: bold;
+
 
             filter: drop-shadow(0px 0px 4px #000a);
-            line-height: 100%;
             
             &:first-child{
                 top: 10px;
             }
+
             &:last-child{
-                bottom: 20px;
+                bottom: 15px;
+            }
+
+            &.long-bottom, .long-top{
+                font-size: 45px;
+                
+                @media screen and (max-width: 600px) {
+                    font-size: 40px !important;
+                }
+    
+                @media screen and (max-width:450px) {
+                    font-size: 30px !important;
+                }
             }
         }
 
         @media screen and (max-width: 450px) {
-            span{
-                font-size: 23px !important;
+            .text{
+                font-size: 60px !important;
             }
         }
 
         &.bytegen{
-            span{
-                line-height: 80%;
-                font-family: "Luckiest Guy", cursive !important;
-                font-family: "Jersey 10", cursive !important;
+            .text{
+                font-family: "Luckiest Guy", sans-serif !important;
+                font-family: "Jersey 10", sans-serif !important;
                 font-size: 80px;
                 color: rgb(237, 209, 52);
                 text-shadow: 0px 0px 10px rgba(74, 38, 101, 0.145);
@@ -185,14 +223,13 @@ input{
         }
 
         &.doge{
-            span{
-                font-family: "Luckiest Guy", cursive !important;
-                // font-family: "Jersey 10", cursive !important;
+            .text{
+                font-family: "Luckiest Guy", sans-serif !important;
+                // font-family: "Jersey 10", sans-serif !important;
                 font-size: 60px;
                 // color: rgb(237, 209, 52);
                 // text-shadow: 0px 0px 10px rgb(74, 38, 101);
                 letter-spacing: 1px;
-                line-height: 100%;
                 
                 @media screen and (max-width: 600px) {
                     font-size: 60px !important;
@@ -217,9 +254,9 @@ input{
         }
 
         &.default{
-            span{
+            .text{
                 font-family: "Concert One", sans-serif !important;
-                // font-family: "Jersey 10", cursive !important;
+                // font-family: "Jersey 10", sans-serif !important;
                 font-size: 80px;
                 // color: rgb(237, 209, 52);
                 // text-shadow: 0px 0px 10px rgb(74, 38, 101);
@@ -249,9 +286,9 @@ input{
         }
         
         &.elon-musk{
-            span{
+            .text{
                 font-family: "Lilita One", sans-serif !important;
-                // font-family: "Jersey 10", cursive !important;
+                // font-family: "Jersey 10", sans-serif !important;
                 font-size: 60px;
                 // color: rgb(237, 209, 52);
                 // text-shadow: 0px 0px 10px rgb(74, 38, 101);
@@ -278,6 +315,26 @@ input{
             }
         }
     }
+
+    &.download{
+        position: fixed !important;
+        top: 0;
+        left: 22px;
+        width: calc(100% - 44px);
+        z-index: 1000;
+        pointer-events: none;
+
+        .absolute-div{
+            transform: translateY(-30px);
+            .text{
+            }
+        }
+    }
+}
+
+
+.hide-me{
+    opacity: 0;
 }
 
 .mainres{
